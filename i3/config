@@ -1,4 +1,3 @@
-
 # get color from xressource configuration - variable_name xressource_color fallback
 
 # special
@@ -40,12 +39,14 @@ set_from_resource $white2 color15 #ffffff
 
 set $mod Mod4
 
-font pango:monospace 12
+# font pango:monospace 12
+font pango:Inconsolata NF 12
 #font pango:DejaVu Sans Mono 8
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
+exec --no-startup-id dunst
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -64,6 +65,13 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run
+
+# dunst keyboard shortcuts
+bindsym $mod+x exec dunstctl close-all
+bindsym Ctrl+BackSpace exec dunstctl history-pop
+
+# Remap Caps Lock key when external keyboard is plugged
+bindsym $mod+z exec "setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape' &"
 
 # change focus
 bindsym $mod+h focus left
