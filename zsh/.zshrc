@@ -1,4 +1,5 @@
 fpath=($ZDOTDIR/external $fpath)
+export PATH=$N_PREFIX/bin:$PATH
 
 source "$XDG_CONFIG_HOME/zsh/aliases"
 

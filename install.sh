@@ -18,7 +18,7 @@ mkdir -p "$XDG_CONFIG_HOME/nvim/autoload"
 ln -sf "$DOTFILES/nvim/autoload/plug.vim" "$XDG_CONFIG_HOME/nvim/autoload/plug.vim"
 
 # Install (or update) all the plugins
-nvim --noplugin +PlugUpdate +qa
+# nvim --noplugin +PlugUpdate +qa
 
 # Xresources
 rm -rf "$XDG_CONFIG_HOME/X11"
@@ -58,6 +58,13 @@ ln -sf "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
 "$XDG_CONFIG_HOME/tmux/plugins/tpm"
 
 # Tmuxp
-# This file should be in "$XDG_CONFIG_HOME/tmuxp/dotfiles.yml"
 rm -rf "$XDG_CONFIG_HOME/tmuxp"
 ln -s "$DOTFILES/tmuxp" "$XDG_CONFIG_HOME"
+
+# Node and npm
+if ! command -v node &> /dev/null
+then
+    echo "Node is not installed, installing..."
+    curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts
+fi
+
