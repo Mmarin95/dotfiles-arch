@@ -48,3 +48,16 @@ ln -sf "$DOTFILES/dunst/dunstrc" "$XDG_CONFIG_HOME/dunst/dunstrc"
 # Git
 mkdir -p "$XDG_CONFIG_HOME/git" 
 ln -sf "$DOTFILES/git/config" "$XDG_CONFIG_HOME/git/config"
+
+# Tmux
+mkdir -p "$XDG_CONFIG_HOME/tmux"
+ln -sf "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
+
+[ ! -d "$XDG_CONFIG_HOME/tmux/plugins" ] \
+&& git clone https://github.com/tmux-plugins/tpm \
+"$XDG_CONFIG_HOME/tmux/plugins/tpm"
+
+# Tmuxp
+# This file should be in "$XDG_CONFIG_HOME/tmuxp/dotfiles.yml"
+rm -rf "$XDG_CONFIG_HOME/tmuxp"
+ln -s "$DOTFILES/tmuxp" "$XDG_CONFIG_HOME"

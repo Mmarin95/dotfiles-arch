@@ -43,7 +43,12 @@ fi
 #    pgrep i3 || exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
 #fi
 
-source $DOTFILES/zsh/scripts.sh
+source $DOTFILES/zsh/scripts.zsh
+
+# Clearing the shell is now done with CTRL+g
+bindkey -r '^l'
+bindkey -r '^g'
+bindkey -s '^g' 'clear\n'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
